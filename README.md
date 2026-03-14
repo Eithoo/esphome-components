@@ -50,6 +50,8 @@ esp32:
   board: esp32dev
   framework:
     type: esp-idf
+    advanced:
+      loop_task_stack_size: 32768
 
 logger:
   level: DEBUG
@@ -90,6 +92,8 @@ esp32:
   flash_size: 8MB
   framework:
     type: esp-idf
+    advanced:
+      loop_task_stack_size: 32768
 
 logger:
   id: component_logger
@@ -231,6 +235,21 @@ text_sensor:
     parent_id: electricity_meter
     field: current_alarms
     name: Electricity Meter alarms
+```
+
+## ESPHome Version Compatibility
+
+This repository includes a custom `esp32` component aligned to **ESPHome 2026.2.4**. It contains all the standard ESP32 platform support including the newer ESP32-C61 variant.
+
+Since the wmbus_radio component processes data in the main loop task, it may require a larger stack than the default 8 KB. Use `loop_task_stack_size` in your ESP-IDF framework configuration:
+
+```yaml
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+    advanced:
+      loop_task_stack_size: 32768
 ```
 
 ## Radio Configuration Notes
