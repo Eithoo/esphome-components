@@ -20,7 +20,6 @@ external_components:
       type: local
       path: ../components
     components: [wmbus_radio, wmbus_meter, wmbus_common]
-    # Note: Removed esp32 component - using standard ESPHome esp32 to avoid post_build.py issue
 
 logger:
   level: DEBUG  # Debug level to show frame hex dumps
